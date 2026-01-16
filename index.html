@@ -43,10 +43,6 @@ button:hover {
     opacity: 0.9;
 }
 
-.unlock {
-    background: #00aa66;
-}
-
 .discord {
     background: #5865F2;
 }
@@ -122,13 +118,13 @@ textarea {
 
 <div class="container">
     <h1>🔥 LYNOX HUB – SCRIPTS 🔥</h1>
-    <p>Haz clic para desbloquear los scripts</p>
+    <p>Únete a mi Discord para desbloquear los scripts</p>
 
-    <!-- BOTÓN DESBLOQUEO -->
-    <button class="unlock" onclick="unlock()">🔓 Desbloquear Scripts</button>
+    <!-- BOTÓN DISCORD -->
+    <button class="discord" onclick="unlock()">💬 Unirse a Discord</button>
     <div id="countdown"></div>
 
-    <!-- BOTONES DISCORD Y TIKTOK (DESPUÉS) -->
+    <!-- BOTONES DESPUÉS -->
     <div class="socials" id="socials">
         <button class="discord" onclick="openDiscord()">💬 Discord</button>
         <button class="tiktok" onclick="openTikTok()">🎵 TikTok</button>
@@ -198,13 +194,16 @@ textarea {
 let time = 15;
 
 function unlock() {
+    // abre discord
+    window.open("https://discord.gg/3KWj8TJp", "_blank");
+
     document.getElementById("countdown").innerText =
-        "⏳ Espera " + time + " segundos...";
+        "⏳ Verificando unión al Discord... " + time + "s";
 
     const timer = setInterval(() => {
         time--;
         document.getElementById("countdown").innerText =
-            "⏳ Espera " + time + " segundos...";
+            "⏳ Verificando unión al Discord... " + time + "s";
 
         if (time <= 0) {
             clearInterval(timer);
