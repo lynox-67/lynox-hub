@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Lynox Hub Scripts</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #050505, #0f0f0f);
+    color: white;
+}
+
+.container {
+    max-width: 950px;
+    margin: auto;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #00ff99;
+    font-size: 36px;
+}
+
+p {
+    color: #bbb;
+}
+
+button {
+    background: #5865F2;
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+#countdown {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #00ffaa;
+}
+
+.scripts {
+    display: none;
+    margin-top: 40px;
+}
+
+.script {
+    background: #111;
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 22px;
+    box-shadow: 0 0 15px rgba(0,255,150,0.1);
+    text-align: left;
+}
+
+.script h3 {
+    margin: 0 0 8px;
+    color: #00ffaa;
+}
+
+textarea {
+    width: 100%;
+    height: 90px;
+    background: #000;
+    color: #00ff99;
+    border: none;
+    padding: 12px;
+    font-family: monospace;
+    resize: none;
+    border-radius: 8px;
+}
+
+.copy {
+    background: #00aa66;
+    margin-top: 10px;
+}
+
+.footer {
+    margin-top: 50px;
+    color: #666;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🔥 LYNOX HUB – SCRIPTS 🔥</h1>
+    <p>Para ver los scripts debes unirte a nuestro Discord</p>
+
+    <button onclick="unlock()">🔗 Unirse al Discord</button>
+    <div id="countdown"></div>
+
+    <div class="scripts" id="scripts">
+
+        <div class="script">
+            <h3>Instant Steal</h3>
+            <textarea readonly>loadstring(game:HttpGet("https://raw.githubusercontent.com/lynox-67/instal-steal/refs/heads/main/lua"))()</textarea>
+            <button class="copy" onclick="copy(this)">📋 Copiar</button>
+        </div>
+
+        <div class="script">
+            <h3>FPS Killer</h3>
+            <textarea readonly>loadstring(game:HttpGet("https://raw.githubusercontent.com/lynox-67/fpskilerv8/refs/heads/main/lua"))()</textarea>
+            <button class="copy" onclick="copy(this)">📋 Copiar</button>
+        </div>
+
+        <div class="script">
+            <h3>Spawner</h3>
+            <textarea readonly>loadstring(game:HttpGet("https://raw.githubusercontent.com/lynox-67/SabScrip/refs/heads/main/lua"))()</textarea>
+            <button class="copy" onclick="copy(this)">📋 Copiar</button>
+        </div>
+
+        <div class="script">
+            <h3>Pet Finder</h3>
+            <textarea readonly>loadstring(game:HttpGet("https://raw.githubusercontent.com/lynox-67/pueda-/refs/heads/main/lua"))()</textarea>
+            <button class="copy" onclick="copy(this)">📋 Copiar</button>
+        </div>
+
+        <div class="script">
+            <h3>Método Moreira</h3>
+            <textarea readonly>loadstring(game:HttpGet("https://raw.githubusercontent.com/lynox-67/metodo-moreira/refs/heads/main/lua"))()</textarea>
+            <button class="copy" onclick="copy(this)">📋 Copiar</button>
+        </div>
+
+        <div class="script">
+            <h3>Auto Steal</h3>
+            <textarea readonly>loadstring(game:HttpGet("https://raw.githubusercontent.com/lynox-67/autosteal/refs/heads/main/lua"))()</textarea>
+            <button class="copy" onclick="copy(this)">📋 Copiar</button>
+        </div>
+
+        <div class="script">
+            <h3>Speed</h3>
+            <textarea readonly>loadstring(game:HttpGet("https://raw.githubusercontent.com/lynox-67/sab/refs/heads/main/lua"))()</textarea>
+            <button class="copy" onclick="copy(this)">📋 Copiar</button>
+        </div>
+
+        <div class="script">
+            <h3>Instant Steal LYNOX</h3>
+            <textarea readonly>loadstring(game:HttpGet("https://raw.githubusercontent.com/lynox-67/istante-steal/refs/heads/main/lua"))()</textarea>
+            <button class="copy" onclick="copy(this)">📋 Copiar</button>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        © Lynox Hub | Discord exclusivo
+    </div>
+</div>
+
+<script>
+let time = 15;
+let timer;
+
+function unlock() {
+    window.open("https://discord.gg/3KWj8TJp", "_blank");
+
+    document.getElementById("countdown").innerText =
+        "⏳ Espera " + time + " segundos...";
+
+    timer = setInterval(() => {
+        time--;
+        document.getElementById("countdown").innerText =
+            "⏳ Espera " + time + " segundos...";
+
+        if (time <= 0) {
+            clearInterval(timer);
+            document.getElementById("scripts").style.display = "block";
+            document.getElementById("countdown").innerText =
+                "✅ Scripts desbloqueados";
+        }
+    }, 1000);
+}
+
+function copy(btn) {
+    const text = btn.previousElementSibling;
+    text.select();
+    document.execCommand("copy");
+}
+</script>
+
+</body>
+</html>
